@@ -7,12 +7,20 @@ public class lista6Ex4 {
         int quantidadeDeMulheres = 0;
         double somaSalario = 0;
         int quantidadeDeFuncionarios = 0;
+        Scanner leitor = new Scanner(System.in);
         for (int i = 1; i <= 4; i++) {
-            Scanner leitor = new Scanner(System.in);
             System.out.println("Insira sua idade: " + "(Digite 0 para sair)");
             int idade = leitor.nextInt();
-            System.out.println("Insira seu sexo: digite 1 para masculino e 2 para feminino ");
-            int sexo = leitor.nextInt();
+            if (idade == 0) {
+                break;
+            }
+            leitor = new Scanner(System.in);
+            String sexo;
+            do {
+                System.out.println("Insira seu sexo: digite M para masculino e F para feminino ");
+                sexo = leitor.nextLine();
+            } while (!sexo.equalsIgnoreCase("F") && !sexo.equalsIgnoreCase("M"));
+
             System.out.println("Insira o seu salário: ");
             double salario = leitor.nextDouble();
             somaSalario += salario;
@@ -24,7 +32,7 @@ public class lista6Ex4 {
                 idadeMenor = idade;
 
             }
-            if (sexo == 2 && salario >= 4000) {
+            if (sexo.equalsIgnoreCase("F") && salario >= 4000) {
                 quantidadeDeMulheres += 1;
 
             }
